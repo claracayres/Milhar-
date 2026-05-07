@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milharê — Painel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <link rel="stylesheet" href="/assets/css/admin.css" />
+</head>
+<body>
+
+<!-- ── TOAST ── -->
+<div id="toast"></div>
+
+<!-- ════════════════════════════════════════
+     LOGIN
+════════════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">Milhar<span>ê</span></div>
+    <div class="login-sub">✍️ Painel de administração</div>
+
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" id="loginEmail" placeholder="admin@milhare.com" />
+    </div>
+    <div class="form-group">
+      <label>Senha</label>
+      <input type="password" id="loginPass" placeholder="••••••••" />
+    </div>
+    <button class="btn btn-primary btn-full" onclick="doLogin()" id="loginBtn">
+      Entrar
+    </button>
+    <p id="loginError" style="margin-top:.8rem;font-size:.8rem;color:var(--red);display:none"></p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SIDEBAR
+════════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">Milhar<span>ê</span></div>
+
+  <span class="nav-section-label">Menu</span>
+  <nav class="sidebar-nav">
+    <a href="#" class="active" data-tab="dashboard">
+      <span class="icon">📊</span> Dashboard
+    </a>
+    <a href="#" data-tab="cardapio">
+      <span class="icon">🌽</span> Cardápio
+    </a>
+    <a href="#" data-tab="vendaDia">
+      <span class="icon">⭐</span> Venda do Dia
+    </a>
+  </nav>
+
+  <span class="nav-section-label">Loja</span>
+  <nav class="sidebar-nav">
+    <a href="index.html" target="_blank">
+      <span class="icon">🌐</span> Ver site
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="user-info" id="userEmail">—</div>
+    <button class="btn btn-ghost btn-sm" onclick="doLogout()" style="width:100%;justify-content:center">
+      Sair
+    </button>
+  </div>
+</aside>
+
+<!-- ════════════════════════════════════════
+     MAIN
+════════════════════════════════════════ -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbarTitle">Dashboard</div>
+    <div class="topbar-actions" id="topbarActions"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- ── DASHBOARD ── -->
+    <div class="tab-panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Itens no cardápio</div>
+          <div class="stat-value green" id="statTotal">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Itens ativos</div>
+          <div class="stat-value milho" id="statAtivos">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Venda do dia</div>
+          <div class="stat-value terra" id="statVd">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Unidades restantes</div>
+          <div class="stat-value" id="statRest">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🌽 Cardápio ativo</span>
+          <a href="#" class="btn btn-ghost btn-sm" data-tab="cardapio">Gerenciar</a>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Item</th><th>Categoria</th><th>Preço</th><th>Status</th></tr>
+          </thead>
+          <tbody id="dashTable">
+            <tr class="loading-row"><td colspan="4">🌽 carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CARDÁPIO ── -->
+    <div class="tab-panel" id="panel-cardapio">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🌽 Itens do cardápio</span>
+          <button class="btn btn-terra btn-sm" onclick="openItemModal()">+ Novo item</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Emoji</th>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Destaque</th>
+              <th>Ativo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="cardapioTable">
+            <tr class="loading-row"><td colspan="7">🌽 carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── VENDA DO DIA ── -->
+    <div class="tab-panel" id="panel-vendaDia">
+
+      <div class="vd-card">
+        <h2 style="font-family:'Caveat',cursive;font-size:1.4rem;color:var(--cafe);margin-bottom:1.5rem;">
+          ⭐ Configurar venda do dia
+        </h2>
+
+        <div class="vd-grid">
+          <div class="form-group">
+            <label>Nome do sabor *</label>
+            <input type="text" id="vdNome" placeholder="Ex: Pamonha de Doce de Leite" />
+          </div>
+          <div class="form-group">
+            <label>Emoji</label>
+            <input type="text" id="vdEmoji" placeholder="🌽" maxlength="4" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea id="vdDesc" placeholder="Descreva o sabor do dia..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preço (R$)</label>
+            <input type="number" id="vdPreco" placeholder="0.00" step="0.01" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Data</label>
+            <input type="date" id="vdData" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ingredientes (Enter para adicionar)</label>
+          <div class="tag-input-wrap" id="tagWrap" onclick="document.getElementById('tagInput').focus()">
+            <span id="tagList"></span>
+            <input class="tag-real-input" id="tagInput" placeholder="adicionar ingrediente..." />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Unidades disponíveis</label>
+          <div class="stock-display">
+            <div class="stock-num" id="unitsDisplay">40</div>
+            <div class="stock-bar-wrap">
+              <div class="stock-track">
+                <div class="stock-fill" id="vdStockFill" style="width:100%"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--cafe-lt);margin-top:.3rem">
+                <span>0</span>
+                <span id="vdMaxLabel">de 40</span>
+              </div>
+            </div>
+            <div class="stock-controls">
+              <button class="btn btn-ghost btn-sm" onclick="adjustUnits(-1)">−</button>
+              <input type="number" id="vdUnidadesTotal" value="40" min="1" max="999"
+                style="width:60px;text-align:center;"
+                class="form-group input"
+                oninput="syncUnitsDisplay()" />
+              <button class="btn btn-ghost btn-sm" onclick="adjustUnits(1)">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:.5rem;">
+          <div class="toggle-wrap">
+            <label class="toggle">
+              <input type="checkbox" id="vdAtivo" checked />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Exibir no site hoje</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:.7rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border);">
+          <button class="btn btn-primary" onclick="saveVendaDia()">
+            💾 Salvar venda do dia
+          </button>
+          <button class="btn btn-ghost" onclick="loadVendaDiaForm()">
+            ↺ Recarregar
+          </button>
+        </div>
+      </div>
+
+      <!-- histórico -->
+      <div class="card" style="margin-top:1.5rem;">
+        <div class="card-header">
+          <span class="card-title">📅 Histórico recente</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Data</th><th>Sabor</th><th>Unidades</th><th>Vendidas</th><th>Status</th><th>Ações</th></tr>
+          </thead>
+          <tbody id="vdHistory">
+            <tr class="loading-row"><td colspan="6">carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<!-- ════════════════════════════════════════
+     MODAL — ITEM DO CARDÁPIO
+════════════════════════════════════════ -->
+<div class="modal-overlay" id="itemModal" onclick="closeItemModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="itemModalTitle">Novo item</span>
+      <button class="modal-close" onclick="closeItemModal()">✕</button>
+    </div>
+
+    <input type="hidden" id="itemId" />
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nome *</label>
+        <input type="text" id="itemNome" placeholder="Pamonha de Queijo" />
+      </div>
+      <div class="form-group">
+        <label>Emoji</label>
+        <input type="text" id="itemEmoji" placeholder="🧀" maxlength="4" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea id="itemDesc" placeholder="Descreva o sabor..."></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Categoria *</label>
+        <select id="itemCategoria">
+          <option value="salgado">Salgado</option>
+          <option value="doce">Doce</option>
+          <option value="especial">Especial</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preço (R$) *</label>
+        <input type="number" id="itemPreco" placeholder="0.00" step="0.01" min="0" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Ordem de exibição</label>
+        <input type="number" id="itemOrdem" value="0" min="0" />
+      </div>
+      <div class="form-group">
+        <label>Texto do badge (opcional)</label>
+        <input type="text" id="itemBadge" placeholder="⭐ mais pedida" />
+      </div>
+    </div>
+
+    <div style="display:flex;gap:2rem;margin-top:.5rem;">
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" id="itemAtivo" checked />
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Ativo</span>
+      </div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" id="itemDestaque" />
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Destaque</span>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeItemModal()">Cancelar</button>
+      <button class="btn btn-terra" onclick="saveItem()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONFIRMAÇÃO DELETE -->
+<div class="modal-overlay" id="confirmModal" onclick="closeConfirmModalOutside(event)">
+  <div class="modal" style="max-width:380px;">
+    <div class="modal-header">
+      <span class="modal-title">Confirmar exclusão</span>
+      <button class="modal-close" onclick="closeConfirmModal()">✕</button>
+    </div>
+    <p class="confirm-msg">
+      Deseja excluir o item <span class="confirm-name" id="confirmName"></span>?
+      Esta ação não pode ser desfeita.
+    </p>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeConfirmModal()">Cancelar</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">🗑 Excluir</button>
+    </div>
+  </div>
+</div>
+  <script src="/assets/js/admin.js" defer></script>
+</body>
+</html>

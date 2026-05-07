@@ -1,0 +1,16 @@
+{
+  "name": "milhare",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site e painel administrativo da Milhare com backend Vercel e Supabase.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "local": "vercel dev",
+    "check": "node --check assets/js/site.js && node --check assets/js/admin.js && node --check api/config.js && node --check api/cardapio.js && node --check api/cardapio/[id].js && node --check api/venda-dia.js && node --check api/venda-dia/[id].js && node --check lib/http.js && node --check lib/supabase.js && node --check lib/validators.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4"
+  }
+}
