@@ -8,7 +8,9 @@
   },
   "scripts": {
     "local": "vercel dev",
-    "check": "node --check assets/js/site.js && node --check assets/js/admin.js && node --check api/config.js && node --check api/cardapio.js && node --check api/cardapio/[id].js && node --check api/venda-dia.js && node --check api/venda-dia/[id].js && node --check lib/http.js && node --check lib/supabase.js && node --check lib/validators.js"
+    "build": "npm run check && node scripts/build-static.js",
+    "vercel-build": "npm run build",
+    "check": "node --check scripts/build-static.js && node --check assets/js/site.js && node --check assets/js/admin.js && node --check api/config.js && node --check api/site.js && node --check api/cardapio.js && node --check api/cardapio/[id].js && node --check api/venda-dia.js && node --check api/venda-dia/[id].js && node --check lib/http.js && node --check lib/supabase.js && node --check lib/validators.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4"

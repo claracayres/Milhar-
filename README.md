@@ -8,6 +8,9 @@ Site estatico com painel administrativo, backend em Vercel Functions e dados no 
 .
 ├── index.html                 # Site publico
 ├── admin.html                 # Painel administrativo
+├── public/                    # Saida gerada no build para a Vercel
+├── scripts/
+│   └── build-static.js        # Copia HTML/assets para public/
 ├── assets/
 │   ├── css/
 │   │   ├── site.css           # Estilos do site publico
@@ -32,6 +35,7 @@ Site estatico com painel administrativo, backend em Vercel Functions e dados no 
 ## O que ficou integrado
 
 - `GET /api/cardapio`: lista itens ativos para o site publico.
+- `GET /api/site`: carrega textos, links, depoimentos e blocos da homepage.
 - `POST /api/cardapio` e `/api/cardapio/:id`: CRUD protegido para o admin.
 - `GET /api/venda-dia`: venda ativa do dia para o site publico.
 - `POST /api/venda-dia` e `/api/venda-dia/:id`: gerenciamento protegido para o admin.
@@ -47,6 +51,18 @@ Site estatico com painel administrativo, backend em Vercel Functions e dados no 
    - Project URL para `SUPABASE_URL`
    - anon public para `SUPABASE_ANON_KEY`
    - service_role secret para `SUPABASE_SERVICE_ROLE_KEY`
+
+`SUPABASE_URL` deve ser somente a URL base do projeto, sem `/rest/v1` e sem `/auth/v1`:
+
+```txt
+SUPABASE_URL=https://seu-projeto.supabase.co
+```
+
+Se o banco ja existir e voce quiser apenas ligar os textos/links das secoes da homepage ao Supabase, rode:
+
+```txt
+supabase/add_site_content.sql
+```
 
 ## Vercel
 

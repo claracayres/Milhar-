@@ -3,7 +3,7 @@ create extension if not exists pgcrypto;
 create table if not exists public.cardapio (
   id uuid primary key default gen_random_uuid(),
   nome text not null,
-  emoji text not null default '🌽',
+  emoji text not null default 'fa-wheat-awn',
   descricao text not null default '',
   categoria text not null default 'salgado',
   preco numeric(10, 2) not null,
@@ -21,7 +21,7 @@ create table if not exists public.venda_dia (
   id uuid primary key default gen_random_uuid(),
   data date not null unique,
   nome text not null,
-  emoji text not null default '🌽',
+  emoji text not null default 'fa-wheat-awn',
   descricao text not null default '',
   preco numeric(10, 2),
   unidades_total integer not null default 40,
@@ -36,11 +36,22 @@ create table if not exists public.venda_dia (
   constraint venda_dia_estoque_check check (unidades_vendidas <= unidades_total)
 );
 
+create table if not exists public.site_content (
+  id text primary key,
+  data jsonb not null default '{}'::jsonb,
+  ativo boolean not null default true,
+  criado_em timestamptz not null default now(),
+  atualizado_em timestamptz not null default now()
+);
+
 create index if not exists cardapio_public_idx
   on public.cardapio (ativo, ordem, criado_em);
 
 create index if not exists venda_dia_public_idx
   on public.venda_dia (data, ativo, criado_em desc);
+
+create index if not exists site_content_public_idx
+  on public.site_content (id, ativo);
 
 create or replace function public.set_atualizado_em()
 returns trigger
@@ -66,14 +77,23 @@ create trigger set_venda_dia_atualizado_em
   for each row
   execute function public.set_atualizado_em();
 
+drop trigger if exists set_site_content_atualizado_em on public.site_content;
+create trigger set_site_content_atualizado_em
+  before update on public.site_content
+  for each row
+  execute function public.set_atualizado_em();
+
 alter table public.cardapio enable row level security;
 alter table public.venda_dia enable row level security;
+alter table public.site_content enable row level security;
 
 grant usage on schema public to anon, authenticated, service_role;
 grant select on table public.cardapio to anon, authenticated;
 grant select on table public.venda_dia to anon, authenticated;
+grant select on table public.site_content to anon, authenticated;
 grant all on table public.cardapio to service_role;
 grant all on table public.venda_dia to service_role;
+grant all on table public.site_content to service_role;
 
 drop policy if exists "Public read active cardapio" on public.cardapio;
 create policy "Public read active cardapio"
@@ -88,3 +108,10 @@ create policy "Public read active venda_dia"
   for select
   to anon, authenticated
   using (ativo = true and data = current_date);
+
+drop policy if exists "Public read active site_content" on public.site_content;
+create policy "Public read active site_content"
+  on public.site_content
+  for select
+  to anon, authenticated
+  using (ativo = true);

@@ -9,26 +9,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
 
   <!-- ─── FLOATING IFOOD ─── -->
   <div class="float-ifood">
-    <div class="float-tooltip">🌽 Pedir agora no iFood</div>
+    <div class="float-tooltip"><i class="fa-solid fa-wheat-awn"></i> Pedir agora no iFood</div>
     <a class="float-btn" href="https://www.ifood.com.br" target="_blank" rel="noopener" aria-label="iFood">
-      <svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-4.5-6.72-5-8.99-5-2.28 0-9.01.5-9.01 5h18zm-14.32-2.87c.14-.16.36-.22.56-.15l3.81 1.41-2.24-3.89a.5.5 0 0 1 .63-.7l4.14 2.18-1.76-4.16a.5.5 0 0 1 .7-.63l3.83 1.66-.77-2.52a.5.5 0 0 1 .94-.34l1.33 4.34a.5.5 0 0 1-.67.61L5.49 8.52l1.76 4.17a.5.5 0 0 1-.63.69L2.48 11.2l2.13 3.7a.5.5 0 0 1-.73.67L1.7 13.54a.5.5 0 0 1-.05-.69l.06-.72z"/></svg>
+      <i class="fa-solid fa-utensils"></i>
     </a>
   </div>
 
   <!-- ─── MOBILE MENU ─── -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <button class="mobile-menu-close" id="menuClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
     <a href="#sobre"    onclick="closeMobile()">Nossa história</a>
     <a href="#cardapio" onclick="closeMobile()">Cardápio</a>
     <a href="#limitada" onclick="closeMobile()">Edição limitada</a>
     <a href="#pedir"    onclick="closeMobile()">Pedir agora</a>
-    <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="btn-ifood" style="font-size:1.1rem;padding:.7rem 1.8rem;">iFood 🍽</a>
+    <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="btn-ifood" style="font-size:1.1rem;padding:.7rem 1.8rem;"><i class="fa-solid fa-utensils"></i> iFood</a>
   </div>
 
   <!-- ─── NAVBAR ─── -->
@@ -38,7 +39,7 @@
       <li><a href="#sobre">Nossa história</a></li>
       <li><a href="#cardapio">Cardápio</a></li>
       <li><a href="#limitada">Edição limitada</a></li>
-      <li><a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="nav-cta">🍽 iFood</a></li>
+      <li><a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="nav-cta"><i class="fa-solid fa-utensils"></i> iFood</a></li>
     </ul>
     <div class="hamburger" id="hamburger" role="button" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -47,15 +48,15 @@
 
   <!-- ─── HERO ─── -->
   <section class="hero">
-    <span class="corner-deco tl">🌽</span>
-    <span class="corner-deco tr">🌾</span>
-    <span class="corner-deco bl">🫕</span>
-    <span class="corner-deco br">🍃</span>
+    <span class="corner-deco tl"><i class="fa-solid fa-wheat-awn"></i></span>
+    <span class="corner-deco tr"><i class="fa-solid fa-seedling"></i></span>
+    <span class="corner-deco bl"><i class="fa-solid fa-bowl-food"></i></span>
+    <span class="corner-deco br"><i class="fa-solid fa-leaf"></i></span>
 
     <div class="hero-inner">
       <!-- TEXT -->
       <div>
-        <p class="hero-pre reveal">✍️ feito com as mãos da vó</p>
+        <p class="hero-pre reveal"><i class="fa-solid fa-pen-nib"></i> feito com as mãos da vó</p>
 
         <h1 class="hero-title reveal d1">
           Pamonha que<br />
@@ -73,10 +74,10 @@
 
         <div class="hero-btns reveal d3">
           <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="btn-ifood">
-            <svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-4.5-6.72-5-8.99-5-2.28 0-9.01.5-9.01 5h18zm-14.32-2.87c.14-.16.36-.22.56-.15l3.81 1.41-2.24-3.89a.5.5 0 0 1 .63-.7l4.14 2.18-1.76-4.16a.5.5 0 0 1 .7-.63l3.83 1.66-.77-2.52a.5.5 0 0 1 .94-.34l1.33 4.34a.5.5 0 0 1-.67.61L5.49 8.52l1.76 4.17a.5.5 0 0 1-.63.69L2.48 11.2l2.13 3.7a.5.5 0 0 1-.73.67L1.7 13.54a.5.5 0 0 1-.05-.69l.06-.72z"/></svg>
+            <i class="fa-solid fa-utensils"></i>
             Pedir pelo iFood
           </a>
-          <a href="#cardapio" class="btn-ghost">Ver cardápio ↓</a>
+          <a href="#cardapio" class="btn-ghost">Ver cardápio <i class="fa-solid fa-arrow-down"></i></a>
         </div>
       </div>
 
@@ -87,9 +88,9 @@
           <div class="recipe-top">
             <div>
               <div class="recipe-title" id="heroSpecialName">Sabor do dia</div>
-              <div class="recipe-sub">🌽 Destaque do dia</div>
+              <div class="recipe-sub"><i class="fa-solid fa-wheat-awn"></i> Destaque do dia</div>
             </div>
-            <div class="recipe-emoji" id="heroSpecialEmoji">🌽</div>
+            <div class="recipe-emoji" id="heroSpecialEmoji"><i class="fa-solid fa-wheat-awn"></i></div>
           </div>
 
           <hr class="recipe-divider" />
@@ -105,7 +106,7 @@
           <div class="recipe-footer">
             <div>
               <div class="recipe-price" id="heroSpecialPrice">R$ —</div>
-              <div class="stars-row">★★★★★</div>
+              <div class="stars-row" aria-label="5 estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
             </div>
             <div class="stamp">
               <span class="stamp-main">Feito<br />à mão</span>
@@ -114,7 +115,7 @@
           </div>
 
           <div class="hero-note">
-            <p>Apenas <span id="heroSpecialUnits">—</span> unidades hoje. Garante logo! 🌽</p>
+            <p>Apenas <span id="heroSpecialUnits">—</span> unidades hoje. Garante logo! <i class="fa-solid fa-wheat-awn"></i></p>
           </div>
         </div>
       </div>
@@ -155,19 +156,19 @@
         <div class="photo-frame reveal">
           <div class="frame-outer">
             <div class="frame-img">
-              <div class="frame-emoji">🌽</div>
+              <div class="frame-emoji"><i class="fa-solid fa-wheat-awn"></i></div>
               <p class="frame-caption">a receita que<br />atravessa gerações</p>
             </div>
           </div>
-          <p class="frame-label">📸 foto de família, com amor</p>
+          <p class="frame-label"><i class="fa-solid fa-camera-retro"></i> foto de família, com amor</p>
           <div class="frame-small">
-            <div class="frame-small-img">🫶</div>
+            <div class="frame-small-img"><i class="fa-solid fa-hand-holding-heart"></i></div>
             <p class="frame-small-label">com carinho</p>
           </div>
         </div>
 
         <div class="sobre-text-wrap">
-          <p class="sobre-kicker reveal">✍️ Nossa história</p>
+          <p class="sobre-kicker reveal"><i class="fa-solid fa-pen-nib"></i> Nossa história</p>
           <h2 class="sobre-title reveal d1">Do milho fresco<br /><em>à sua mesa.</em></h2>
 
           <p class="sobre-p reveal d2">
@@ -182,10 +183,10 @@
           </div>
 
           <div class="sobre-p reveal d3" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem">
-            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)">🌽 milho fresco</span>
-            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)">✋ feito à mão</span>
-            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)">❤️ receita da vó</span>
-            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)">🌿 sem conservantes</span>
+            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)"><i class="fa-solid fa-wheat-awn"></i> milho fresco</span>
+            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)"><i class="fa-solid fa-hand"></i> feito à mão</span>
+            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)"><i class="fa-solid fa-heart"></i> receita da vó</span>
+            <span style="background:var(--papel-dk);border:1.5px dashed rgba(61,43,26,0.2);border-radius:4px;padding:.3rem .9rem;font-family:'Caveat',cursive;font-size:1rem;color:var(--cafe-lt)"><i class="fa-solid fa-leaf"></i> sem conservantes</span>
           </div>
         </div>
       </div>
@@ -196,7 +197,7 @@
   <section class="cardapio" id="cardapio">
     <div class="container">
       <div class="cardapio-header">
-        <p class="cardapio-kicker reveal">🌽 o que tem hoje</p>
+        <p class="cardapio-kicker reveal"><i class="fa-solid fa-wheat-awn"></i> o que tem hoje</p>
         <h2 class="cardapio-title reveal d1">Nossos sabores</h2>
         <p class="cardapio-sub reveal d2">Tudo feito na hora, na medida certa, do jeito de sempre.</p>
       </div>
@@ -211,7 +212,7 @@
       <!-- menu dinamico via Supabase -->
       <div class="recipe-grid" id="menuGrid">
         <div class="menu-loading" style="grid-column:1/-1;text-align:center;padding:3rem;font-family:'Caveat',cursive;font-size:1.3rem;color:var(--cafe-lt);">
-          🌽 carregando sabores...
+          <i class="fa-solid fa-wheat-awn"></i> carregando sabores...
         </div>
       </div>
     </div>
@@ -222,7 +223,7 @@
     <div class="container">
       <div class="limitada-grid">
         <div>
-          <p class="lim-kicker reveal">📅 todo dia muda</p>
+          <p class="lim-kicker reveal"><i class="fa-solid fa-calendar-day"></i> todo dia muda</p>
           <h2 class="lim-title reveal d1">Só <em>40 unidades</em><br />por dia.</h2>
           <p class="lim-text reveal d2">
             Quando acaba, acabou. Cada dia tem um sabor especial, feito com calma, do jeito que se fazia antigamente. Sem pressa, sem mágica industrial — só milho, mão e carinho.
@@ -257,7 +258,7 @@
 
           <div class="reveal d4">
             <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="btn-ifood">
-              <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-4.5-6.72-5-8.99-5-2.28 0-9.01.5-9.01 5h18zm-14.32-2.87c.14-.16.36-.22.56-.15l3.81 1.41-2.24-3.89a.5.5 0 0 1 .63-.7l4.14 2.18-1.76-4.16a.5.5 0 0 1 .7-.63l3.83 1.66-.77-2.52a.5.5 0 0 1 .94-.34l1.33 4.34a.5.5 0 0 1-.67.61L5.49 8.52l1.76 4.17a.5.5 0 0 1-.63.69L2.48 11.2l2.13 3.7a.5.5 0 0 1-.73.67L1.7 13.54a.5.5 0 0 1-.05-.69l.06-.72z"/></svg>
+              <i class="fa-solid fa-utensils"></i>
               Garantir a minha
             </a>
           </div>
@@ -265,12 +266,12 @@
 
         <div class="reveal d2">
           <div class="chalk-card">
-            <div class="chalk-label">🌟 sabor do dia</div>
-            <div class="chalk-emoji" id="specialEmoji">🍯</div>
+            <div class="chalk-label"><i class="fa-solid fa-star"></i> sabor do dia</div>
+            <div class="chalk-emoji" id="specialEmoji"><i class="fa-solid fa-jar"></i></div>
             <div class="chalk-name" id="specialName">carregando...</div>
             <div class="chalk-desc" id="specialDesc"></div>
             <hr class="chalk-rule" />
-            <div class="chalk-units" id="specialUnits">🌽 — unidades restantes</div>
+            <div class="chalk-units" id="specialUnits"><i class="fa-solid fa-wheat-awn"></i> — unidades restantes</div>
           </div>
         </div>
       </div>
@@ -281,7 +282,7 @@
   <section class="pedir" id="pedir">
     <div class="container">
       <div class="pedir-inner">
-        <p class="pedir-kicker reveal">🚚 chega quentinho</p>
+        <p class="pedir-kicker reveal"><i class="fa-solid fa-truck-fast"></i> chega quentinho</p>
         <h2 class="pedir-title reveal d1">Receba em casa.<br /><em>Ainda quentinha.</em></h2>
         <p class="pedir-sub reveal d2">
           Disponível no iFood. Também aceitamos encomendas e kits de presente pelo WhatsApp — perfeito pra presentear com afeto.
@@ -289,28 +290,28 @@
 
         <div class="ifood-card reveal d2">
           <div class="ifood-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-4.5-6.72-5-8.99-5-2.28 0-9.01.5-9.01 5h18zm-14.32-2.87c.14-.16.36-.22.56-.15l3.81 1.41-2.24-3.89a.5.5 0 0 1 .63-.7l4.14 2.18-1.76-4.16a.5.5 0 0 1 .7-.63l3.83 1.66-.77-2.52a.5.5 0 0 1 .94-.34l1.33 4.34a.5.5 0 0 1-.67.61L5.49 8.52l1.76 4.17a.5.5 0 0 1-.63.69L2.48 11.2l2.13 3.7a.5.5 0 0 1-.73.67L1.7 13.54a.5.5 0 0 1-.05-.69l.06-.72z"/></svg>
+            <i class="fa-solid fa-utensils"></i>
           </div>
           <div class="ifood-text">
             <strong>Peça pelo iFood</strong>
             <span>Entrega rápida, rastreada e direto na sua porta.<br />Avaliação 4.9 estrelas com mais de 200 entregas.</span>
           </div>
           <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="btn-ifood" style="flex-shrink:0">
-            Abrir →
+            Abrir <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
 
         <div class="feats reveal d3">
-          <div class="feat"><span class="feat-emoji">🌽</span> milho fresco diário</div>
-          <div class="feat"><span class="feat-emoji">⚡</span> entrega em até 45min</div>
-          <div class="feat"><span class="feat-emoji">📦</span> embalagem artesanal</div>
-          <div class="feat"><span class="feat-emoji">❤️</span> feito com carinho</div>
+          <div class="feat"><span class="feat-emoji"><i class="fa-solid fa-wheat-awn"></i></span> milho fresco diário</div>
+          <div class="feat"><span class="feat-emoji"><i class="fa-solid fa-bolt"></i></span> entrega em até 45min</div>
+          <div class="feat"><span class="feat-emoji"><i class="fa-solid fa-box-open"></i></span> embalagem artesanal</div>
+          <div class="feat"><span class="feat-emoji"><i class="fa-solid fa-heart"></i></span> feito com carinho</div>
         </div>
 
         <div class="reveal d3">
           <p style="font-family:'Caveat',cursive;font-size:1.05rem;color:var(--cafe-lt);margin-bottom:.8rem;">Quer encomenda especial ou kit de presente?</p>
-          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20encomendar%20pamonhas%20da%20Milharê%20🌽" target="_blank" rel="noopener" class="whatsapp-btn">
-            💬 WhatsApp
+          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20encomendar%20pamonhas%20da%20Milharê" target="_blank" rel="noopener" class="whatsapp-btn">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
           </a>
         </div>
       </div>
@@ -321,43 +322,43 @@
   <section class="depoimentos">
     <div class="container">
       <div class="dep-header">
-        <p class="dep-kicker reveal">💬 quem já provou</p>
+        <p class="dep-kicker reveal"><i class="fa-solid fa-comment-dots"></i> quem já provou</p>
         <h2 class="dep-title reveal d1">A galera tá falando</h2>
       </div>
 
       <div class="dep-grid">
         <div class="dep-card reveal">
-          <div class="dep-stars">★★★★★</div>
+          <div class="dep-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="dep-text">"Melhor pamonha que já comi na vida. Dá pra sentir que foi feita com carinho. A de queijo meia cura é simplesmente absurda."</p>
           <div class="dep-author">
-            <div class="dep-avatar" style="border-color:#e8c96a;background:#fff9e0;">👩</div>
+            <div class="dep-avatar" style="border-color:#e8c96a;background:#fff9e0;"><i class="fa-solid fa-user"></i></div>
             <div>
               <div class="dep-name">Ana Paula S.</div>
-              <div class="dep-via">via iFood ⭐</div>
+              <div class="dep-via">via iFood <i class="fa-solid fa-star"></i></div>
             </div>
           </div>
         </div>
 
         <div class="dep-card reveal d1">
-          <div class="dep-stars">★★★★★</div>
+          <div class="dep-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="dep-text">"Pedi a edição limitada de doce de leite e me arrependi de não ter pedido mais. Embalagem linda. Virei cliente fiel da Milharê."</p>
           <div class="dep-author">
-            <div class="dep-avatar" style="border-color:#8a9a5b;background:#f0f4e8;">👨</div>
+            <div class="dep-avatar" style="border-color:#8a9a5b;background:#f0f4e8;"><i class="fa-solid fa-user"></i></div>
             <div>
               <div class="dep-name">Carlos M.</div>
-              <div class="dep-via">via iFood ⭐</div>
+              <div class="dep-via">via iFood <i class="fa-solid fa-star"></i></div>
             </div>
           </div>
         </div>
 
         <div class="dep-card reveal d2">
-          <div class="dep-stars">★★★★★</div>
+          <div class="dep-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="dep-text">"A pamonha assada é outro nível. Casquinha crocante, por dentro cremosa. Parece que você tá na roça. Parabéns pela qualidade!"</p>
           <div class="dep-author">
-            <div class="dep-avatar" style="border-color:#c4953a;background:#fff6e8;">👩</div>
+            <div class="dep-avatar" style="border-color:#c4953a;background:#fff6e8;"><i class="fa-solid fa-user"></i></div>
             <div>
               <div class="dep-name">Fernanda O.</div>
-              <div class="dep-via">via WhatsApp ⭐</div>
+              <div class="dep-via">via WhatsApp <i class="fa-solid fa-star"></i></div>
             </div>
           </div>
         </div>
@@ -368,16 +369,16 @@
   <!-- ─── INSTAGRAM ─── -->
   <section class="insta">
     <div class="insta-header reveal">
-      <h3 class="insta-title">Segue a gente 📸</h3>
+      <h3 class="insta-title">Segue a gente <i class="fa-solid fa-camera-retro"></i></h3>
       <p class="insta-sub"><a href="https://instagram.com/milhare" target="_blank" rel="noopener" class="insta-handle">@milhare</a> — processo, bastidores e sabores do dia</p>
     </div>
     <div class="insta-grid reveal d1">
-      <div class="insta-item">🌽</div>
-      <div class="insta-item">🫕</div>
-      <div class="insta-item">🧀</div>
-      <div class="insta-item">🔥</div>
-      <div class="insta-item">🍯</div>
-      <div class="insta-item">💜</div>
+      <div class="insta-item"><i class="fa-solid fa-wheat-awn"></i></div>
+      <div class="insta-item"><i class="fa-solid fa-bowl-food"></i></div>
+      <div class="insta-item"><i class="fa-solid fa-cheese"></i></div>
+      <div class="insta-item"><i class="fa-solid fa-fire"></i></div>
+      <div class="insta-item"><i class="fa-solid fa-jar"></i></div>
+      <div class="insta-item"><i class="fa-solid fa-heart"></i></div>
     </div>
   </section>
 
@@ -388,9 +389,9 @@
         <span class="footer-logo">Milhar<span>ê</span></span>
         <p>Pamonhas artesanais feitas com milho fresco e receita de família. Tradição que abraça.</p>
         <div class="social-row">
-          <a href="https://instagram.com/milhare" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">📷</a>
-          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="soc-btn" aria-label="WhatsApp">💬</a>
-          <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="soc-btn" aria-label="iFood">🍽</a>
+          <a href="https://instagram.com/milhare" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="soc-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.ifood.com.br" target="_blank" rel="noopener" class="soc-btn" aria-label="iFood"><i class="fa-solid fa-utensils"></i></a>
         </div>
       </div>
 
@@ -426,7 +427,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 Milharê Pamonhas Artesanais 🌽 — feito com amor e milho fresco.</span>
+      <span>© 2026 Milharê Pamonhas Artesanais <i class="fa-solid fa-wheat-awn"></i> — feito com amor e milho fresco.</span>
       <span>"Do milho à memória."</span>
     </div>
   </footer>

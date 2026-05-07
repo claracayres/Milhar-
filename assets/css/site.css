@@ -31,9 +31,23 @@ body::before {
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
 }
- img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; }
 a   { text-decoration: none; color: inherit; }
 ul  { list-style: none; }
+
+.fa-solid,
+.fa-regular,
+.fa-brands {
+  line-height: 1;
+}
+
+.icon-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  min-width: 1.15em;
+}
  /* ─── TYPOGRAPHY ─── */
 .script  { font-family: 'Caveat', cursive; }
 .serif   { font-family: 'Playfair Display', serif; }
@@ -310,7 +324,8 @@ ul  { list-style: none; }
   box-shadow: 3px 3px 0 var(--cafe);
 }
 .btn-ifood:hover { background: #c41625; border-color: #c41625; transform: translate(-1px,-1px); box-shadow: 4px 4px 0 rgba(61,43,26,0.4); }
-.btn-ifood svg { width: 18px; height: 18px; fill: #fff; }
+.btn-ifood svg,
+.btn-ifood i { width: 18px; height: 18px; fill: #fff; display: inline-flex; align-items: center; justify-content: center; }
  /* Hero recipe card */
 .hero-card {
   background: var(--papel);
@@ -325,11 +340,14 @@ ul  { list-style: none; }
 .hero-card:hover { transform: rotate(0deg); }
  /* Pin */
 .hero-card::before {
-  content: '📌';
+  content: '\f08d';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   position: absolute;
   top: -14px; left: 50%;
   transform: translateX(-50%);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
+  color: var(--terracota);
   filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.2));
 }
  .card-header-strip {
@@ -343,7 +361,7 @@ ul  { list-style: none; }
   align-items: flex-start;
   margin-bottom: 1.2rem;
 }
-.recipe-emoji { font-size: 4rem; }
+.recipe-emoji { font-size: 4rem; color: var(--terracota); }
  .recipe-title {
   font-family: 'Caveat', cursive;
   font-size: 1.8rem;
@@ -389,7 +407,7 @@ ul  { list-style: none; }
   font-weight: 700;
 }
  /* Stars row */
-.stars-row { color: var(--milho); font-size: 0.9rem; letter-spacing: 1px; }
+.stars-row { color: var(--milho); font-size: 0.9rem; display: inline-flex; gap: 0.15rem; }
  /* Floating note */
 .hero-note {
   position: absolute;
@@ -476,7 +494,7 @@ section { padding: 6rem 2.5rem; }
   inset: 0;
   background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 60px);
 }
-.frame-emoji { font-size: 6rem; position: relative; z-index: 1; }
+.frame-emoji { font-size: 6rem; position: relative; z-index: 1; color: var(--milho); }
 .frame-caption {
   font-family: 'Caveat', cursive;
   font-size: 1.1rem;
@@ -572,7 +590,9 @@ section { padding: 6rem 2.5rem; }
 .cardapio { background: var(--creme); position: relative; overflow: hidden; }
  /* Background corn pattern */
 .cardapio::before {
-  content: '🌽';
+  content: '\f72d';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   position: absolute;
   font-size: 30rem;
   opacity: 0.015;
@@ -654,7 +674,7 @@ section { padding: 6rem 2.5rem; }
   width: 100%;
 }
  .rc-body { padding: 1.5rem 1.5rem 0; position: relative; z-index: 1; }
- .rc-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; }
+.rc-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; color: var(--terracota); }
  .rc-badge {
   position: absolute;
   top: 1rem; right: 1rem;
@@ -806,7 +826,7 @@ section { padding: 6rem 2.5rem; }
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
-.chalk-emoji { font-size: 5rem; margin-bottom: 0.8rem; }
+.chalk-emoji { font-size: 5rem; margin-bottom: 0.8rem; color: var(--milho); }
 .chalk-name {
   font-family: 'Caveat', cursive;
   font-size: 1.8rem;
@@ -870,7 +890,8 @@ section { padding: 6rem 2.5rem; }
   flex-shrink: 0;
   box-shadow: 3px 3px 0 rgba(61,43,26,0.2);
 }
-.ifood-icon-wrap svg { width: 32px; height: 32px; fill: #fff; }
+.ifood-icon-wrap svg,
+.ifood-icon-wrap i { width: 32px; height: 32px; fill: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; }
  .ifood-text { flex: 1; }
 .ifood-text strong {
   font-family: 'Playfair Display', serif;
@@ -895,7 +916,7 @@ section { padding: 6rem 2.5rem; }
   font-size: 1.05rem;
   color: var(--cafe-lt);
 }
-.feat-emoji { font-size: 1.2rem; }
+.feat-emoji { font-size: 1.05rem; color: var(--terracota); }
  .whatsapp-btn {
   display: inline-flex;
   align-items: center;
@@ -942,7 +963,7 @@ section { padding: 6rem 2.5rem; }
   border-radius: 2px;
 }
 .dep-card:hover { transform: translateY(-4px) rotate(0.5deg); }
- .dep-stars { color: var(--milho); font-size: 0.9rem; margin-bottom: 0.8rem; }
+.dep-stars { color: var(--milho); font-size: 0.9rem; margin-bottom: 0.8rem; display: inline-flex; gap: 0.15rem; }
 .dep-text {
   font-family: 'Caveat', cursive;
   font-size: 1.1rem;
@@ -951,7 +972,7 @@ section { padding: 6rem 2.5rem; }
   margin-bottom: 1.2rem;
 }
 .dep-author { display: flex; align-items: center; gap: 0.7rem; }
-.dep-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border: 2px solid var(--milho-lt); }
+.dep-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; border: 2px solid var(--milho-lt); color: var(--terracota); }
 .dep-name { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--cafe); font-weight: 600; }
 .dep-via { font-size: 0.72rem; color: var(--cafe-lt); }
  /* ─── INSTAGRAM ─── */
@@ -973,6 +994,7 @@ section { padding: 6rem 2.5rem; }
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
   font-size: 2.5rem;
+  color: rgba(255,255,255,0.88);
   cursor: pointer;
   transition: transform 0.3s, filter 0.3s;
   border: 1.5px solid var(--papel);
@@ -1091,7 +1113,8 @@ footer {
   border: 2px dashed rgba(234,29,44,0.35);
   animation: pulseRing 2.5s ease-in-out infinite;
 }
-.float-btn svg { width: 24px; height: 24px; fill: #fff; }
+.float-btn svg,
+.float-btn i { width: 24px; height: 24px; fill: #fff; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 1.35rem; }
 .float-btn:hover { transform: scale(1.08) rotate(-5deg); }
  @keyframes pulseRing {
   0%, 100% { transform: scale(1);    opacity: 0.6; }
